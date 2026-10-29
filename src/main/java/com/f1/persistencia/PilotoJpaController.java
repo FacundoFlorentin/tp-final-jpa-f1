@@ -4,6 +4,7 @@ import com.f1.logica.Piloto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import java.util.List; // OBLIGATORIO: Agregamos el import para las listas
 
 public class PilotoJpaController {
 	
@@ -43,6 +44,34 @@ public class PilotoJpaController {
 			if (em != null) {
 				em.close();
 			}
+		}
+	}
+
+	// ==========================================
+	// NUEVOS MÉTODOS DE LA ACTIVIDAD 15
+	// ==========================================
+
+	// BUSCAR UNO: busca un piloto por su id.
+	// No hace falta transacción porque no modifica nada en la base.
+	public Piloto buscarUno(int id) {
+		EntityManager em = getEntityManager();
+		try {
+			// find busca por clave primaria. Si no existe, devuelve null.
+			return em.find(Piloto.class, id);
+		} finally {
+			em.close();
+		}
+	}
+
+	// BUSCAR TODOS: devuelve una lista con todos los pilotos.
+	public List<Piloto> buscarTodos() {
+		EntityManager em = getEntityManager();
+		try {
+			// Consulta JPQL: "traeme todos los objetos Piloto"
+			return em.createQuery("SELECT p FROM Piloto p", Piloto.class)
+					.getResultList();
+		} finally {
+			em.close();
 		}
 	}
 }

@@ -23,7 +23,7 @@
             <property name="jakarta.persistence.jdbc.password" value=""/>
 
             <!-- Estrategia para que Hibernate cree las tablas de manera automática -->
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
         </properties>
     </persistence-unit>

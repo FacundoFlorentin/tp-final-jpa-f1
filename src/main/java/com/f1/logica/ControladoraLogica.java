@@ -1,6 +1,7 @@
 package com.f1.logica;
 
 import com.f1.persistencia.ControladoraPersistencia;
+import java.util.List; // OBLIGATORIO: Import para manejar listas
 
 public class ControladoraLogica {
 
@@ -58,5 +59,29 @@ public class ControladoraLogica {
 
 		// Si pasa todas las validaciones, se guarda en la base de datos
 		controlPersis.crearPiloto(pil);
+	}
+
+	// ==========================================
+	// NUEVOS MÉTODOS DE LA ACTIVIDAD 15 (LECTURA)
+	// ==========================================
+
+	// BUSCAR UNA ESCUDERIA por su id
+	public Escuderia buscarUnaEscuderia(int id) {
+		return controlPersis.buscarEscuderia(id);
+	}
+
+	// LISTAR TODAS LAS ESCUDERIAS
+	public List<Escuderia> listarEscuderias() {
+		return controlPersis.buscarTodasLasEscuderias();
+	}
+
+	// BUSCAR UN PILOTO por su id (Lo escribimos nosotros siguiendo el mismo modelo)
+	public Piloto buscarUnPiloto(int id) {
+		return controlPersis.buscarPiloto(id);
+	}
+
+	// LISTAR TODOS LOS PILOTOS (Lo escribimos nosotros siguiendo el mismo modelo)
+	public List<Piloto> listarPilones() {
+		return controlPersis.buscarTodosLosPilotos();
 	}
 }

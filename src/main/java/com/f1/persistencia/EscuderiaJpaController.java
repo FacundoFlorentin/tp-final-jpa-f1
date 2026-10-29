@@ -4,6 +4,7 @@ import com.f1.logica.Escuderia;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import java.util.List; // OBLIGATORIO: Agregamos el import para las listas
 
 public class EscuderiaJpaController {
 	
@@ -43,6 +44,34 @@ public class EscuderiaJpaController {
 			if (em != null) {
 				em.close();
 			}
+		}
+	}
+
+	// ==========================================
+	// NUEVOS MÉTODOS DE LA ACTIVIDAD 15
+	// ==========================================
+
+	// BUSCAR UNO: busca una escudería por su id.
+	// No hace falta transacción porque no modifica nada en la base.
+	public Escuderia buscarUno(int id) {
+		EntityManager em = getEntityManager();
+		try {
+			// find busca por clave primaria. Si no existe, devuelve null.
+			return em.find(Escuderia.class, id);
+		} finally {
+			em.close();
+		}
+	}
+
+	// BUSCAR TODOS: devuelve una lista con todas las escuderías.
+	public List<Escuderia> buscarTodos() {
+		EntityManager em = getEntityManager();
+		try {
+			// Consulta JPQL: "traeme todos los objetos Escuderia"
+			return em.createQuery("SELECT e FROM Escuderia e", Escuderia.class)
+					.getResultList();
+		} finally {
+			em.close();
 		}
 	}
 }

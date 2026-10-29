@@ -35,4 +35,10 @@ public class Piloto implements Serializable {
     public void setTiempoVuelta(float tiempoVuelta) { this.tiempoVuelta = tiempoVuelta; }
     public int getNumeroCarro() { return numeroCarro; }
     public void setNumeroCarro(int numeroCarro) { this.numeroCarro = numeroCarro; }
+    @Override
+    public String toString() {
+        return "PILOTO: \n" + "ID: " + getId() + "\nNombre: " + getNombre()
+                + "\nTiempo de vuelta: " + getTiempoVuelta()
+                + "\nNumero de carro: " + getNumeroCarro();
+    }
 }

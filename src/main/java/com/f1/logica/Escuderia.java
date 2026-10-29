@@ -47,4 +47,11 @@ public class Escuderia implements Serializable {
     public void setNacionalidad(String nacionalidad) { this.nacionalidad = nacionalidad; }
     public int getEdad() { return edad; }
     public void setEdad(int edad) { this.edad = edad; }
+    @Override
+    public String toString() {
+        return "ESCUDERIA: \n" + "ID: " + getId() + "\nNombre: " + getNombre()
+                + "\nDirector de equipo: " + getDirectorEquipo()
+                + "\nNacionalidad: " + getNacionalidad() + "\nEdad: " + getEdad();
+    }
+
 }
