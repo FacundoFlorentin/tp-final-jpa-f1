@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+             
+    <!-- Cambiamos el nombre de la unidad a formula1_pu -->
+    <persistence-unit name="formula1_pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Registramos tus dos nuevas clases de entidad -->
+        <class>com.f1.logica.Escuderia</class>
+        <class>com.f1.logica.Piloto</class>
+        
+        <properties>
+            <!-- Configuración del driver de conexión de MySQL usando jakarta -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            
+            <!-- Cambiamos el nombre de la base de datos a formula1 -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/formula1?serverTimeZone=UTC"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <!-- Pon tu contraseña de MySQL aquí si usas una (ej: value="root" o value="tu_clave") -->
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Estrategia para que Hibernate cree las tablas de manera automática -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
